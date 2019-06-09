@@ -1,0 +1,29 @@
+{
+  "name": "jewellery-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "prettier --write '**/*.ts'",
+    "lint": "tslint -c tslint.json 'app/**/*.ts'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/silverwedding/jewellery-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/silverwedding/jewellery-api/issues"
+  },
+  "homepage": "https://github.com/silverwedding/jewellery-api#readme",
+  "devDependencies": {
+    "@types/node": "^12.0.7",
+    "prettier": "^1.18.2",
+    "tslint": "^5.17.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-config-security": "^1.16.0",
+    "typescript": "^3.5.1"
+  }
+}
