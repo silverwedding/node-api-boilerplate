@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "prettier": "prettier --write '**/*.ts'",
-    "lint": "tslint -c tslint.json 'app/**/*.ts'"
+    "lint": "tslint -c tslint.json 'app/**/*.ts'",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
