@@ -29,7 +29,7 @@
     "tslint": "^5.19.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-security": "^1.16.0",
-    "typescript": "^3.6.2"
+    "typescript": "^3.6.3"
   },
   "jest-junit": {
     "output": "./test-report.xml"
