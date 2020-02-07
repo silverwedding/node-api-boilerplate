@@ -1,10 +1,10 @@
-import { User } from '../orm/models/schema/User';
-
 process.env.NODE_ENV = 'test';
 
 import request from 'supertest';
 import app from '../app';
 import { knexConnection } from '../orm/connection';
+import { User } from '../orm/models/schema/User';
+import { createFakeUsers } from '../orm/seeds/users';
 
 const server = app.listen();
 request.agent(server);
@@ -24,7 +24,7 @@ describe('auth routes', () => {
 
   describe('POST /auth/signup', () => {
     test('should register a new user', async () => {
-      const user = {};
+      const [user] = createFakeUsers(1);
       const response = await request(app.callback())
         .post(`/auth/signup`)
         .send(user);
@@ -39,7 +39,7 @@ describe('auth routes', () => {
 
   describe('POST /auth/login', () => {
     test('should login a user', async () => {
-      const user = { email: 'test', password: 'test' };
+      const [user] = createFakeUsers(1);
       const { email, password } = user;
       await userTable.insertGraph(user);
 

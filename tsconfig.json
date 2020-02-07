@@ -13,9 +13,6 @@
   "exclude": [
     "node_modules"
   ],
-  "atom": {
-    "formatOnSave": true
-  },
   "formatCodeOptions": {
     "indentSize": 2,
     "tabSize": 2,
