@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  postgres:
+    build:
+      context: ./
+      dockerfile: Dockerfile.postgres
+    restart: always
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: db
+      PGDATA: /var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+volumes:
+  pgdata:
+    driver: local

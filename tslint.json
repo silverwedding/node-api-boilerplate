@@ -11,14 +11,14 @@
     "no-consecutive-blank-lines": true,
     "no-trailing-whitespace": true,
     "object-literal-shorthand": true,
-    "file-name-casing": [true, "kebab-case"],
+    "file-name-casing": [false, "kebab-case"],
     "no-reference": false,
     "variable-name": [
       true,
       "ban-keywords",
       "check-format",
       "allow-pascal-case"
-    ],
+    ]
   },
   "rulesDirectory": []
 }

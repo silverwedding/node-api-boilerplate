@@ -4,8 +4,15 @@ jobs: # a collection of steps
     working_directory: ~/project # directory where steps will run
     docker: # run the steps with Docker
       - image: node:8.11.1 #...with this image as the primary container; this is where all `steps` will run
+      - image: redis:5.0.5
+      - image: postgres:11.4
+        environment:
+          POSTGRES_USER: root
     environment:
       NODE_ENV: test
+      DATABASE_URL: postgresql://root@localhost:5432/
+      APP_SECRET: test
+      TEST_SUITE: circle_ci
     steps: # a collection of executable commands
       - checkout # special step to check out source code to working directory
       - restore_cache: # special step to restore the dependency cache
@@ -22,6 +29,18 @@ jobs: # a collection of steps
           name: Build
           command: |
             npm run build
+      - run:
+          name: Setup PSQL Databases
+          command: |
+            echo "deb http://deb.debian.org/debian jessie main" > /etc/apt/sources.list
+            echo "deb http://deb.debian.org/debian stable-updates main" >> /etc/apt/sources.list
+            apt-get update
+            apt-get install -y postgresql-client
+            psql -U root -h localhost -p 5432 -c "create database circle_ci;"
+      - run:
+          name: Migrate
+          command: |
+            npm run db:migration:run
       - run: # run tests
           name: Test
-          command: npm run test
+          command: npm run test-ci
