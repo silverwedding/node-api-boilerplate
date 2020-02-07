@@ -75,6 +75,7 @@ router.post('/login', async (ctx, next) => {
       }
 
       try {
+        // @ts-ignore
         ctx.login(user, { session: false });
         const body = { id: user.id, email: user.email };
         const token = jwt.sign({ user: body }, process.env.APP_SECRET);
